@@ -3,3 +3,6 @@ server:
   servlet:
     context-path: /auth
 
+spring:
+  application:
+    name: auth-service
