@@ -1,0 +1,26 @@
+server:
+  port: 8001
+  servlet:
+    context-path: /gateway
+    session:
+      cookie:
+        name: UISESSION
+
+eureka:
+  client:
+    register-with-eureka: true
+
+spring:
+  application:
+    name: gateway-service
+
+security:
+  oauth2:
+    client:
+      accessTokenUri: http://localhost:8081/auth/oauth/token
+      userAuthorizationUri: http://localhost:8081/auth/oauth/authorize
+      clientId: acme
+      clientSecret: acmesecret
+
+
+

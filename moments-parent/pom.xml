@@ -7,7 +7,7 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>2.0.0.RELEASE</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <relativePath /> <!-- lookup parent from repository -->
     </parent>
 
     <groupId>com.microsoft.azure.moments</groupId>
@@ -18,6 +18,10 @@
     <url>https://github.com/Microsoft/moments</url>
     <name>Moments Parent POM</name>
     <description>Moments Parent POM</description>
+
+    <properties>
+        <spring.oauth2.version>2.3.0.RELEASE</spring.oauth2.version>
+    </properties>
 
     <repositories>
         <repository>
@@ -39,7 +43,11 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+            <dependency>
+                <groupId>org.springframework.security.oauth</groupId>
+                <artifactId>spring-security-oauth2</artifactId>
+                <version>${spring.oauth2.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
-
 </project>
