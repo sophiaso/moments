@@ -8,6 +8,7 @@ package com.microsoft.azure.moments.config;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.env.Environment;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
@@ -22,14 +23,18 @@ public class OAuth2AuthorizationServerConfiguration extends AuthorizationServerC
     @Qualifier("authenticationManagerBean")
     private AuthenticationManager authenticationManager;
 
+    @Autowired
+    private Environment env;
+
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
         // @formatter:off
         clients.inMemory()
-                .withClient("acme")
-                .secret("acmesecret")
-                .authorizedGrantTypes("authorization_code", "refresh_token", "password")
-                .scopes("ROLE_USER");
+                .withClient("gateway")
+                .secret(env.getProperty("GATEWAY_SERVICE_PASSWORD"))
+                .authorizedGrantTypes("client_credentials", "refresh_token")
+                .scopes("gateway")
+                .redirectUris("http://localhost:8001/gateway");
         // @formatter:on
     }
 
@@ -42,6 +47,4 @@ public class OAuth2AuthorizationServerConfiguration extends AuthorizationServerC
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
         endpoints.authenticationManager(authenticationManager);
     }
-
-
 }

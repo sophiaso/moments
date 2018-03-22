@@ -1,0 +1,17 @@
+server:
+  port: 8761
+
+eureka:
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+
+spring:
+  application:
+    name: eureka-server
+  cloud:
+    config:
+      uri: http://config-server:8888
+      fail-fast: true
+      password: ${GATEWAY_SERVICE_PASSWORD}
+      username: user

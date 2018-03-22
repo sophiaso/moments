@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: auth-server
+  cloud:
+    config:
+      uri: http://config-server:8888
+      fail-fast: true
+      password: password
+      username: user
+
+server:
+  port: 8081

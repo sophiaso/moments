@@ -12,16 +12,15 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
 
 @EnableOAuth2Client
 @Configuration
-public class OAuth2Config extends WebSecurityConfigurerAdapter {
+public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.antMatcher("/**")
-                .authorizeRequests()
-                .antMatchers("/", "/login**")
+        http.authorizeRequests()
+                .antMatchers("/login**")
                 .permitAll()
                 .anyRequest()
                 .authenticated()
                 .and()
-                .formLogin().loginPage("/login").failureUrl("/login?error=true");
+                .formLogin().failureUrl("/login?error=true");
     }
 }

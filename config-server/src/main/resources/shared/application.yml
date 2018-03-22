@@ -1,0 +1,11 @@
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    serviceUrl:
+      defaultZone: http://eureka-server:8761/
+
+security:
+  oauth2:
+    resource:
+      user-info-uri: http://auth-server:5000/auth/user

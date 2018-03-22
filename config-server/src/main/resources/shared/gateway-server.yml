@@ -1,0 +1,24 @@
+server:
+  port: 8001
+  servlet:
+    context-path: /gateway
+    session:
+      cookie:
+        name: UISESSION
+
+eureka:
+  client:
+    register-with-eureka: true
+
+zuul:
+  ignoredServices: '*'
+  host:
+    connect-timeout-millis: 20000
+    socket-timeout-millis: 20000
+
+  routes:
+    auth-service:
+        path: /auth/**
+        url: http://auth-server:8081
+        stripPrefix: false
+        sensitiveHeaders:

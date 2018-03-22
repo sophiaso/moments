@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: gateway-server
+  cloud:
+    config:
+      uri: http://config-server:8888
+      fail-fast: true
+      password: password
+      username: user
+
+
+# TODO: Redirect authentication to the auth-server
+# Currently it's authenticated by gateway itself
+spring:
+  security:
+    user:
+      password: password
+
+
+
