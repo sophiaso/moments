@@ -3,9 +3,9 @@ eureka:
     prefer-ip-address: true
   client:
     serviceUrl:
-      defaultZone: http://eureka-server:8761/
+      defaultZone: http://localhost:8761/
 
 security:
   oauth2:
     resource:
-      user-info-uri: http://auth-server:5000/auth/user
+      user-info-uri: http://localhost:5000/auth/user

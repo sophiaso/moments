@@ -19,6 +19,6 @@ zuul:
   routes:
     auth-service:
         path: /auth/**
-        url: http://auth-server:8081
+        url: http://localhost:8081
         stripPrefix: false
         sensitiveHeaders:
