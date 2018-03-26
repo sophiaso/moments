@@ -1,3 +1,4 @@
 server:
-  context-path: /auth
+  servlet:
+    context-path:  /auth
   port: 5000
