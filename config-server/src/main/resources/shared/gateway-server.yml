@@ -21,7 +21,7 @@ zuul:
         url: http://localhost:5000
         stripPrefix: false
         sensitiveHeaders:
-    notification-service:
+    notification-service: # Notification service can be accessed by: http://localhost:8080/notification/xxxx
         path: /notification/**
         url: http://localhost:7000
         stripPrefix: false
