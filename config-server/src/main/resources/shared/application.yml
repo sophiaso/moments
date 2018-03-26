@@ -1,11 +1,11 @@
 eureka:
   instance:
     prefer-ip-address: true
-  client:
-    serviceUrl:
-      defaultZone: http://localhost:8761/
+    lease-expiration-duration-in-seconds: 2
+    lease-renewal-interval-in-seconds: 1
 
 security:
   oauth2:
     resource:
       user-info-uri: http://localhost:5000/auth/user
+

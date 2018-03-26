@@ -1,0 +1,3 @@
+server:
+  context-path: /notification
+  port: 7000

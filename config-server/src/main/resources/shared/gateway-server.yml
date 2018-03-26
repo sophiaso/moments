@@ -1,5 +1,5 @@
 server:
-  port: 8001
+  port: 6000
   servlet:
     context-path: /gateway
     session:
@@ -19,6 +19,11 @@ zuul:
   routes:
     auth-service:
         path: /auth/**
-        url: http://localhost:8081
+        url: http://localhost:5000
+        stripPrefix: false
+        sensitiveHeaders:
+    notification-service:
+        path: /notification/**
+        url: http://localhost:7000
         stripPrefix: false
         sensitiveHeaders:
