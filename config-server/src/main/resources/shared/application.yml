@@ -1,3 +1,5 @@
+# configuration properties shared by all services,
+# which can be overridden by specific service's own configuration
 eureka:
   instance:
     prefer-ip-address: true
