@@ -18,11 +18,11 @@ zuul:
   routes:
     auth-service:
         path: /auth/**
-        url: http://localhost:5000
+        serviceId: auth-service
         stripPrefix: false
         sensitiveHeaders:
     notification-service: # Notification service can be accessed by: http://localhost:8080/notification/xxxx
         path: /notification/**
-        url: http://localhost:7000
+        serviceId: notification-service  # Notification service should be started after gateway
         stripPrefix: false
         sensitiveHeaders:
