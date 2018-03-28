@@ -24,10 +24,15 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         // @formatter:off
-        http
-                .authorizeRequests().anyRequest().authenticated()
+        http.requestMatchers()
+                .antMatchers("/login", "/oauth/authorize")
                 .and()
-                .csrf().disable();
+                .authorizeRequests()
+                .anyRequest()
+                .authenticated()
+                .and()
+                .formLogin()
+                .permitAll();
         // @formatter:on
     }
 
@@ -36,6 +41,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         // TODO: Replace in memory with database
         final InMemoryUserDetailsManager manager = new InMemoryUserDetailsManager();
         manager.createUser(User.withUsername("user").password("password").roles("USER").build());
+        manager.createUser(User.withUsername("admin").password("password").roles("ADMIN").build());
         return manager;
     }
 

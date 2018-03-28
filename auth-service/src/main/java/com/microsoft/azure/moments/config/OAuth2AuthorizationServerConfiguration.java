@@ -31,10 +31,10 @@ public class OAuth2AuthorizationServerConfiguration extends AuthorizationServerC
         // @formatter:off
         clients.inMemory()
                 .withClient("gateway")
-                .secret(env.getProperty("GATEWAY_SERVICE_PASSWORD"))
-                .authorizedGrantTypes("client_credentials", "refresh_token")
-                .scopes("gateway")
-                .redirectUris("http://localhost:8001/gateway");
+                .secret("secret")
+                .authorizedGrantTypes("authorization_code")
+                .scopes("user_info")
+                .autoApprove(true);
         // @formatter:on
     }
 
