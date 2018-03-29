@@ -18,7 +18,7 @@ zuul:
   routes:
     auth-service:
         path: /auth/**
-        serviceId: auth-service
+        serviceId: auth-service # Using serviceId allows zuul to route requests to multiple servers with same serviceId
         stripPrefix: false
         sensitiveHeaders:
     notification-service: # Notification service can be accessed by: http://localhost:8080/notification/xxxx
