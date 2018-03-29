@@ -1,11 +1,13 @@
 const path = require('path');
 const resolve = require('path').resolve
 
+const static_res_dir = './src/main/resources/static'
+
 module.exports = {
-    entry: './src/main/resources/static/src/main.js',
+    entry: static_res_dir + '/src/main.js',
     output: {
         filename: 'bundle.js',
-        path: path.resolve(__dirname, './src/main/resources/static/dist')
+        path: path.resolve(__dirname, static_res_dir + '/dist')
     },
     module: {
         rules: [{
@@ -15,7 +17,10 @@ module.exports = {
         {
             test: /\.js$/,
             use: ['babel-loader'],
-            exclude: /node_modules/
+            include: [ // use `include` vs `exclude` to white-list vs black-list
+                path.resolve(__dirname, static_res_dir + "/src"), // white-list your app source files
+                require.resolve("bootstrap-vue"), // white-list bootstrap-vue
+            ],
         },
         {
             test: /\.css$/,
