@@ -5,14 +5,15 @@
  */
 package com.microsoft.azure.moments.controller;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.security.Principal;
+
 @RestController
-public class HelloController {
-    @RequestMapping(path = "/hello", method = RequestMethod.GET)
-    public String hello() {
-        return "Hello World";
+public class UserController {
+    @GetMapping("/user")
+    public Principal user(Principal principal) {
+        return principal;
     }
 }

@@ -54,3 +54,6 @@ __pycache__
 gradle-app.setting
 !gradle-wrapper.jar
 .gradletasknamecache
+
+node_modules
+**/src/main/resources/static/dist/
