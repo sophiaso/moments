@@ -14,4 +14,9 @@ public class NotificationController {
     public String getNotification() {
         return "Notification received";
     }
+
+    @GetMapping("/admin/get")
+    public String getAdminNotification() {
+        return "Admin notification received";
+    }
 }
