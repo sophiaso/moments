@@ -1,13 +1,21 @@
 <template>
-    <p>{{ greeting }} World!</p>
+    <div>
+        <Navigator></Navigator>
+        <p>{{ greeting }} World!</p>
+    </div>
 </template>
 
 <script>
-    module.exports = {
+    import Navigator from './components/Navigator';
+
+    export default {
         data: function() {
             return {
                 greeting: 'Hello'
             }
+        },
+        components: {
+            Navigator
         }
     };
 </script>

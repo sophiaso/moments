@@ -5,10 +5,11 @@
   "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack"
+    "build": "webpack --mode development"
   },
   "license": "MIT",
   "dependencies": {
+    "bootstrap": "4.0.0beta.2",
     "bootstrap-vue": "^2.0.0-rc.2",
     "vue": "^2.5.16"
   },
