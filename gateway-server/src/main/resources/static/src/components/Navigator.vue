@@ -7,7 +7,7 @@
                         <template slot="button-content">
                             {{ username }}
                         </template>
-                        <b-dropdown-item href="#" v-on:click="logout">Signout</b-dropdown-item>
+                        <b-dropdown-item v-on:click="logout">Signout</b-dropdown-item>
                     </b-nav-item-dropdown>
                 </b-navbar-nav>
             </b-collapse>
@@ -20,6 +20,7 @@
 <script>
     import Vue from 'vue'
     import {Collapse, Nav, Navbar} from 'bootstrap-vue/es/components';
+    import axios from 'axios';
 
     Vue.use(Collapse);
     Vue.use(Nav);
@@ -28,12 +29,25 @@
     export default {
         data: function() {
             return {
-                username: 'user_1'
+                username: ''
             }
+        },
+        mounted: function () {
+            axios.get('/user').then(response => {
+                if(response.data.principal) {
+                    this.username = response.data.principal.username;
+                }
+            }).catch(error => {
+                console.log(error);
+            });
         },
         methods: {
             logout: function() {
-                this.username = '';
+                axios.post('/logout', {}).then(response => {
+                    this.username = '';
+                }).catch(error => {
+                    console.log(error)
+                });
             }
         },
         computed: {
