@@ -20,7 +20,8 @@
 <script>
     import Vue from 'vue'
     import {Collapse, Nav, Navbar} from 'bootstrap-vue/es/components';
-    import axios from 'axios';
+
+    import { getUser, logout } from '../api/user-api';
 
     Vue.use(Collapse);
     Vue.use(Nav);
@@ -33,20 +34,20 @@
             }
         },
         mounted: function () {
-            axios.get('/user').then(response => {
-                if(response.data.principal) {
-                    this.username = response.data.principal.username;
+            getUser(res => {
+                if(res.data.principal) {
+                    this.username = res.data.principal.username;
                 }
-            }).catch(error => {
-                console.log(error);
+            }, err =>{
+                console.log(err);
             });
         },
         methods: {
             logout: function() {
-                axios.post('/logout', {}).then(response => {
+                logout(res => {
                     this.username = '';
-                }).catch(error => {
-                    console.log(error)
+                }, err => {
+                    console.log(err);
                 });
             }
         },
