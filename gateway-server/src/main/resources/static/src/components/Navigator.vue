@@ -1,7 +1,7 @@
 <template>
     <div>
         <b-navbar toggleable="md" type="dark" variant="info">
-            <b-collapse is-nav id="nav_collapse" v-if="hasLoggedIn">
+            <b-collapse is-nav id="nav_collapse" v-if="hasLoggedIn()">
                 <b-navbar-nav class="ml-auto">
                     <b-nav-item-dropdown right>
                         <template slot="button-content">
@@ -22,12 +22,14 @@
     import {Collapse, Nav, Navbar} from 'bootstrap-vue/es/components';
 
     import { logout } from '../api/user-api';
+    import mixins from "./mixins";
 
     Vue.use(Collapse);
     Vue.use(Nav);
     Vue.use(Navbar);
 
     export default {
+        mixins: [mixins],
         data: function() {
             return {
             }
@@ -39,11 +41,6 @@
                 }).catch(err => {
                     console.log(err);
                 });
-            }
-        },
-        computed: {
-            hasLoggedIn: function() {
-                return this.$store.state.username && this.$store.state.username.replace(/\s/g, '').length !== 0;
             }
         }
     };
