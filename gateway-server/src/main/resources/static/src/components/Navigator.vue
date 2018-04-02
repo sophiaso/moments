@@ -5,7 +5,7 @@
                 <b-navbar-nav class="ml-auto">
                     <b-nav-item-dropdown right>
                         <template slot="button-content">
-                            {{ username }}
+                            {{ this.$store.state.username }}
                         </template>
                         <b-dropdown-item v-on:click="logout">Signout</b-dropdown-item>
                     </b-nav-item-dropdown>
@@ -21,7 +21,7 @@
     import Vue from 'vue'
     import {Collapse, Nav, Navbar} from 'bootstrap-vue/es/components';
 
-    import { getUser, logout } from '../api/user-api';
+    import { logout } from '../api/user-api';
 
     Vue.use(Collapse);
     Vue.use(Nav);
@@ -30,22 +30,12 @@
     export default {
         data: function() {
             return {
-                username: ''
             }
-        },
-        mounted: function () {
-            getUser().then(res => {
-                if(res.data.principal) {
-                    this.username = res.data.principal.username;
-                }
-            }).catch(err =>{
-                console.log(err);
-            });
         },
         methods: {
             logout: function() {
                 logout().then(res => {
-                    this.username = '';
+                    this.$store.commit('clearSession');
                 }).catch(err => {
                     console.log(err);
                 });
@@ -53,7 +43,7 @@
         },
         computed: {
             hasLoggedIn: function() {
-                return this.username && this.username.replace(/\s/g, '').length !== 0;
+                return this.$store.state.username && this.$store.state.username.replace(/\s/g, '').length !== 0;
             }
         }
     };
