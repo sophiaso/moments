@@ -20,8 +20,11 @@
     <description>Moments Parent POM</description>
 
     <properties>
-        <spring.oauth2.version>2.3.0.RELEASE</spring.oauth2.version>
         <project.rootdir>${project.basedir}/..</project.rootdir>
+
+        <spring.oauth2.version>2.3.0.RELEASE</spring.oauth2.version>
+        <spring.cloud.dependencies.version>Finchley.M9</spring.cloud.dependencies.version>
+        <spring.cloud.netflix.version>2.0.0.M7</spring.cloud.netflix.version>
     </properties>
 
     <repositories>
@@ -40,14 +43,14 @@
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
-                <version>Finchley.M9</version>
+                <version>${spring.cloud.dependencies.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-netflix</artifactId>
-                <version>2.0.0.M7</version>
+                <version>${spring.cloud.netflix.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>

@@ -17,6 +17,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableOAuth2Client;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 
 @EnableOAuth2Client
 @Configuration
@@ -28,14 +29,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/", "/login**")
                 .permitAll()
                 .and()
-                .logout()
+                .logout().logoutSuccessUrl("/").permitAll()
                 .and()
                 .authorizeRequests()
                 .antMatchers("/**/admin/**").hasRole("ADMIN")
                 .anyRequest()
                 .authenticated()
                 .and()
-                .formLogin().failureUrl("/login?error=true");
+                .formLogin().failureUrl("/login?error=true")
+                .and().csrf().csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse());
     }
 
     @Bean
