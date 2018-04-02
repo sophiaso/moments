@@ -34,19 +34,19 @@
             }
         },
         mounted: function () {
-            getUser(res => {
+            getUser().then(res => {
                 if(res.data.principal) {
                     this.username = res.data.principal.username;
                 }
-            }, err =>{
+            }).catch(err =>{
                 console.log(err);
             });
         },
         methods: {
             logout: function() {
-                logout(res => {
+                logout().then(res => {
                     this.username = '';
-                }, err => {
+                }).catch(err => {
                     console.log(err);
                 });
             }
