@@ -9,12 +9,21 @@ $ cd gateway-server
 $ npm install
 $ npm run build
 
-Under project root:
-$ mvn clean install
+$ cd .. && mvn clean install
 
 Start servers one after another under each module folder.
 config-server, eureka-server, notification-service, gateway-server
 
+$ cd config-server
+$ mvn spring-boot:run
+
+$ cd eureka-server
+$ mvn spring-boot:run
+
+$ cd notification-service
+$ mvn spring-boot:run
+
+$ cd gateway-server
 $ mvn spring-boot:run
 ```
 
