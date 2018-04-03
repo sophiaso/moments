@@ -9,6 +9,7 @@ module.exports = {
         filename: 'bundle.js',
         path: path.resolve(__dirname, static_res_dir + '/dist')
     },
+    devtool: 'inline-source-map',
     module: {
         rules: [{
             test: /\.vue$/,
