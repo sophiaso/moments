@@ -6,8 +6,7 @@
                          :rows="3"
                          :max-rows="6">
         </b-form-textarea>
-        <pre class="mt-3">{{ msg }}</pre>
-        <b-button variant='primary'>Post</b-button>
+        <b-button id="post-btn" variant='info'>Post</b-button>
     </div>
 </template>
 <script>
@@ -20,4 +19,15 @@
     }
 </script>
 <style>
+    #msg-editor {
+        width: 100%;
+        display: inline-block;
+        padding: 16px 0;
+        background-color: rgba(240,255,255, 0.5);
+    }
+
+    #post-btn {
+        margin: 16px 0;
+        float:right;
+    }
 </style>
