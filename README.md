@@ -41,3 +41,16 @@ $ mvn spring-boot:run
    http://localhost:8080/notification/get
    
    http://localhost:8080/notification/admin/get // Only accessible by admin
+   
+
+### How to develop
+
+#### gateway development
+
+Start gateway server:
+
+$ mvn spring-boot:run
+
+Start webpack dev server:
+
+$ npm run start
