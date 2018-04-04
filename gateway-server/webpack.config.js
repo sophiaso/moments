@@ -1,13 +1,14 @@
 const path = require('path');
 const resolve = require('path').resolve
-
-const static_res_dir = './src/main/resources/static'
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const static_dist_dir='./src/main/resources/static/dist'
+const webapp_dir = './src/main/webapp'
 
 module.exports = {
-    entry: static_res_dir + '/src/main.js',
+    entry: webapp_dir + '/src/main.js',
     output: {
-        filename: 'bundle.js',
-        path: path.resolve(__dirname, static_res_dir + '/dist')
+        filename: 'js/bundle.js',
+        path: path.resolve(__dirname, static_dist_dir)
     },
     devtool: 'inline-source-map',
     module: {
@@ -19,7 +20,7 @@ module.exports = {
             test: /\.js$/,
             use: ['babel-loader'],
             include: [ // use `include` vs `exclude` to white-list vs black-list
-                path.resolve(__dirname, static_res_dir + "/src"), // white-list your app source files
+                path.resolve(__dirname, webapp_dir + "/src"), // white-list app source files
                 require.resolve("bootstrap-vue"), // white-list bootstrap-vue
             ],
         },
@@ -38,10 +39,30 @@ module.exports = {
         }
         ]
     },
+    plugins: [
+        new HtmlWebpackPlugin({
+            template: 'src/main/webapp/index.html'
+        })
+    ],
     resolve: {
         alias: {
-            '~': resolve(__dirname, './src/main/resources/static/src')
+            '~': resolve(__dirname, webapp_dir + "/src")
         },
         extensions: ['*', '.js', '.vue', '.json']
+    },
+    devServer: {
+        contentBase: "/assets/",
+        port: 9090,
+        proxy: {
+            '**': {
+                target: 'http://localhost:8080',
+                secure: false,
+                prependPath: false
+            }
+        },
+        allowedHosts: [
+            'localhost'
+        ],
+        historyApiFallback: true
     }
 };
