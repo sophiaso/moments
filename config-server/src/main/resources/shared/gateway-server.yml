@@ -4,11 +4,20 @@ eureka:
 
 zuul:
   ignoredServices: '*'
+  ignoredPatterns:
+      - /login
+      - /logout
+      - /user
   host:
     connect-timeout-millis: 20000
     socket-timeout-millis: 20000
 
   routes:
+    web-portal:
+        path: /**
+        serviceId: web-portal
+        stripPrefix: false
+        sensitiveHeaders:
     auth-service:
         path: /auth/**
         serviceId: auth-service # Using serviceId allows zuul to route requests to multiple servers with same serviceId

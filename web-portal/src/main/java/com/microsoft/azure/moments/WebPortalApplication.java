@@ -11,8 +11,8 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 @SpringBootApplication
 @EnableDiscoveryClient
-public class NotificationApplication {
+public class WebPortalApplication {
     public static void main(String[] args) {
-        SpringApplication.run(NotificationApplication.class, args);
+        SpringApplication.run(WebPortalApplication.class, args);
     }
 }
