@@ -4,10 +4,6 @@ eureka:
 
 zuul:
   ignoredServices: '*'
-  ignoredPatterns:
-      - /login
-      - /logout
-      - /user
   host:
     connect-timeout-millis: 20000
     socket-timeout-millis: 20000

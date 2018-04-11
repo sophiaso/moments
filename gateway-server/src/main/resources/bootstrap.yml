@@ -5,3 +5,14 @@ spring:
     config:
       uri: http://localhost:8888
       fail-fast: true
+
+security:
+  oauth2:
+    client:
+      client-id: gateway
+      # BCrypt encrypted client secret
+      client-secret: $2y$10$P9YUc0wL.WqO7kaIqF9oqOORmXjmUqKO6K6Af0nITzDExG45tVn9e
+      access-token-uri: http://localhost:5000/auth/oauth/token
+      user-authorization-uri: http://localhost:5000/auth/oauth/authorize
+    resource:
+      user-info-uri: http://localhost:5000/auth/user

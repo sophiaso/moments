@@ -2,7 +2,7 @@ import axios from 'axios';
 
 function getUser() {
     return new Promise((resolve, reject) => {
-        axios.get('/user').then(response => {
+        axios.get('/auth/user').then(response => {
             resolve(response);
         }).catch(error => {
             reject(error);
@@ -12,7 +12,7 @@ function getUser() {
 
 function logout() {
     return new Promise((resolve, reject) => {
-        axios.post('/logout', {}).then(response => {
+        axios.post('/auth/logout', {}).then(response => {
             resolve(response);
         }).catch(error => {
             reject(error);
