@@ -30,7 +30,7 @@
         <module>eureka-server</module>
         <module>gateway-server</module>
         <module>moments-parent</module>
-        <module>notification-service</module>
+        <module>message-service</module>
         <module>web-portal</module>
     </modules>
 

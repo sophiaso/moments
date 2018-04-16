@@ -11,10 +11,10 @@
         <relativePath>../moments-parent</relativePath>
     </parent>
 
-    <artifactId>notification-service</artifactId>
+    <artifactId>message-service</artifactId>
 
-    <name>Moments Spring Cloud Notification Server</name>
-    <description>Moments Spring Cloud Notification Server</description>
+    <name>Moments Spring Cloud Message Server</name>
+    <description>Moments Spring Cloud Message Server</description>
 
     <dependencies>
         <dependency>

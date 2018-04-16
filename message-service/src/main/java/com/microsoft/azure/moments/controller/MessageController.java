@@ -9,14 +9,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class NotificationController {
+public class MessageController {
     @GetMapping("/get")
-    public String getNotification() {
-        return "Notification received";
+    public String getMessage() {
+        return "Message received";
     }
 
     @GetMapping("/admin/get")
-    public String getAdminNotification() {
-        return "Admin notification received";
+    public String getAdminMessage() {
+        return "Admin message received";
     }
 }

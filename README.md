@@ -10,7 +10,7 @@ $ npm run build
 $ cd .. && mvn clean install
 
 Start servers one after another under each module folder.
-config-server, eureka-server, notification-service, web portal, gateway-server
+config-server, eureka-server, message-service, web-portal, gateway-server
 
 $ cd config-server
 $ mvn spring-boot:run
@@ -18,7 +18,7 @@ $ mvn spring-boot:run
 $ cd eureka-server
 $ mvn spring-boot:run
 
-$ cd notification-service
+$ cd message-service
 $ mvn spring-boot:run
 
 $ cd gateway-server
@@ -34,11 +34,11 @@ $ mvn spring-boot:run
    Log in with user/password or admin/password
    
    
-2. Notification service through gateway
+2. Message service through gateway
 
-   http://localhost:8080/notification/get
+   http://localhost:8080/message/get
    
-   http://localhost:8080/notification/admin/get // Only accessible by admin
+   http://localhost:8080/message/admin/get // Only accessible by admin
    
 
 ### How to develop
