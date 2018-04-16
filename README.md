@@ -1,5 +1,3 @@
-`auth-service` is not currently used, all authentication and filter is done in the gateway.
-
 ### How to run
 
 #### Run with maven
@@ -12,7 +10,7 @@ $ npm run build
 $ cd .. && mvn clean install
 
 Start servers one after another under each module folder.
-config-server, eureka-server, notification-service, gateway-server
+config-server, eureka-server, notification-service, web portal, gateway-server
 
 $ cd config-server
 $ mvn spring-boot:run
