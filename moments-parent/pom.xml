@@ -25,6 +25,7 @@
         <spring.oauth2.version>2.3.0.RELEASE</spring.oauth2.version>
         <spring.cloud.dependencies.version>Finchley.M9</spring.cloud.dependencies.version>
         <spring.cloud.netflix.version>2.0.0.M7</spring.cloud.netflix.version>
+        <org.projectlombok.version>1.16.20</org.projectlombok.version>
     </properties>
 
     <repositories>
@@ -58,6 +59,11 @@
                 <groupId>org.springframework.security.oauth</groupId>
                 <artifactId>spring-security-oauth2</artifactId>
                 <version>${spring.oauth2.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${org.projectlombok.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

@@ -9,11 +9,6 @@ zuul:
     socket-timeout-millis: 20000
 
   routes:
-    auth-service:
-        path: /auth/**
-        serviceId: auth-service # Using serviceId allows zuul to route requests to multiple servers with same serviceId
-        stripPrefix: false
-        sensitiveHeaders:
     notification-service: # Notification service can be accessed by: http://localhost:8080/notification/xxxx
         path: /notification/**
         serviceId: notification-service  # Notification service should be started after gateway

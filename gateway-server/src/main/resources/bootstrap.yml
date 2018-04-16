@@ -5,3 +5,19 @@ spring:
     config:
       uri: http://localhost:8888
       fail-fast: true
+
+
+# https://github.com/spring-cloud/spring-cloud-netflix/issues/2606
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 40000
+
+ribbon:
+  ReadTimeout: 10000
+  ConnectTimeout: 10000
+#zuul:
+#  ribbon-isolation-strategy: thread
