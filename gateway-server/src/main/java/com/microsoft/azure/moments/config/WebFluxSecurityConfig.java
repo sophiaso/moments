@@ -13,7 +13,6 @@ import org.springframework.security.core.userdetails.*;
 import org.springframework.security.web.server.SecurityWebFilterChain;
 import org.springframework.security.web.server.csrf.WebSessionServerCsrfTokenRepository;
 
-@Configuration
 @EnableWebFluxSecurity
 public class WebFluxSecurityConfig {
     @Bean
