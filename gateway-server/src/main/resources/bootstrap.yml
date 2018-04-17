@@ -5,4 +5,5 @@ spring:
     config:
       uri: http://localhost:8888
       fail-fast: true
-
+  resources:
+    static-locations: "classpath:/static/dist/"
