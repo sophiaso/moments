@@ -31,7 +31,6 @@
         <module>gateway-server</module>
         <module>moments-parent</module>
         <module>message-service</module>
-        <module>web-portal</module>
     </modules>
 
 </project>
