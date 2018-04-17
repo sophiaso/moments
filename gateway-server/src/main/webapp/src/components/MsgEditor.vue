@@ -6,15 +6,49 @@
                          :rows="3"
                          :max-rows="6">
         </b-form-textarea>
-        <b-button id="post-btn" variant='info'>Post</b-button>
+        <b-button id="post-btn" variant='info' @click="sendMessage">Post</b-button>
     </div>
 </template>
 <script>
+    import Stomp from 'stompjs';
+    import SockJS from 'sockjs-client';
+
+    // TODO: NOT hardcode the url
+    const socketUrl = "http://localhost:7000/message/moments-message"
+
     export default {
         data() {
             return {
-                msg: ''
+                msg: '',
+                stompClient: null
             }
+        },
+        methods: {
+            initConnection: function () {
+                let ws = new SockJS(socketUrl);
+                this.stompClient = Stomp.over(ws);
+                let _this = this;
+                this.stompClient.connect({}, function (frame) {
+                    console.log("Connected: " + frame);
+                    _this.stompClient.subscribe('/message/topic/messages', function (message) {
+                        console.log("Received message: " + message);
+                    });
+                },
+                function (frame) {
+                    console.log("Connection failed with error: " + frame)
+                });
+            },
+
+            sendMessage() {
+                this.stompClient.send("/message/app/onMessage" , {},
+                    JSON.stringify({
+                        name: this.$store.state.username,
+                        message: this.msg
+                    }));
+            }
+        },
+        mounted: function() {
+            this.initConnection();
         }
     }
 </script>

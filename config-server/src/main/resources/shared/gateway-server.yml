@@ -8,7 +8,12 @@ spring:
   cloud:
     gateway:
       routes:
-      - id: message-service
-        uri: lb://message-service
+      - id: websocket
+        order: 20000
+        uri: ws://message-service
         predicates:
-        - Path=/message/**
+        - Path=/message/moments-message
+#      - id: message-service
+#        uri: lb://message-service
+#        predicates:
+#        - Path=/message/**
