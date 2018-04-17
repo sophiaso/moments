@@ -36,8 +36,10 @@ public class WebFluxSecurityConfig {
 
     @Bean
     public ReactiveUserDetailsService reactiveUserDetailsService() {
-        UserDetails user = User.withUsername("user").password("password").roles("USER").build();
-        UserDetails admin = User.withUsername("admin").password("password").roles("ADMIN").build();
+        User.UserBuilder userBuilder = User.withDefaultPasswordEncoder();
+
+        UserDetails user = userBuilder.username("user").password("password").roles("USER").build();
+        UserDetails admin = userBuilder.username("admin").password("password").roles("ADMIN").build();
         return new MapReactiveUserDetailsService(user, admin);
     }
 }
