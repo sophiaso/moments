@@ -13,8 +13,7 @@
     import Stomp from 'stompjs';
     import SockJS from 'sockjs-client';
 
-    // TODO: NOT hardcode the url
-    const socketUrl = "http://localhost:7000/message/moments-message"
+    const socketUrl = "/message/moments-message"
 
     export default {
         data() {
@@ -30,7 +29,7 @@
                 let _this = this;
                 this.stompClient.connect({}, function (frame) {
                     console.log("Connected: " + frame);
-                    _this.stompClient.subscribe('/message/topic/messages', function (message) {
+                    _this.stompClient.subscribe('/topic/messages', function (message) {
                         console.log("Received message: " + message);
                     });
                 },
@@ -40,7 +39,7 @@
             },
 
             sendMessage() {
-                this.stompClient.send("/message/app/onMessage" , {},
+                this.stompClient.send("/app/onMessage" , {},
                     JSON.stringify({
                         name: this.$store.state.username,
                         message: this.msg
