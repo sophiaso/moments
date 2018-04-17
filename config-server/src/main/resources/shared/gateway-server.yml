@@ -2,15 +2,13 @@ eureka:
   client:
     register-with-eureka: true
 
-zuul:
-  ignoredServices: '*'
-  host:
-    connect-timeout-millis: 20000
-    socket-timeout-millis: 20000
-
-  routes:
-    message-service: # Message service can be accessed by: http://localhost:8080/message/xxxx
-        path: /message/**
-        serviceId: message-service  # Message service should be started after gateway
-        stripPrefix: false
-        sensitiveHeaders:
+spring:
+  resources:
+    static-locations: "classpath:/static/dist/"
+  cloud:
+    gateway:
+      routes:
+      - id: message-service
+        uri: lb://message-service
+        predicates:
+        - Path=/message/**
