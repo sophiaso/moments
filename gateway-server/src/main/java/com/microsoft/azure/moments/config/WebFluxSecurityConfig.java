@@ -27,9 +27,7 @@ public class WebFluxSecurityConfig {
                 .anyExchange().authenticated()
                 .and()
                 .formLogin()
-                .and().csrf()
-                .csrfTokenRepository(new WebSessionServerCsrfTokenRepository())
-                .and()
+                .and().csrf().disable()
                 .build();
     }
 
