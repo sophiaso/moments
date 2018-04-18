@@ -116,7 +116,7 @@ For the front end under [gateway-server](gateway-server/src/main/webapp), it's d
 
 Modules beside [gateway-server](gateway-server) are normal Spring Boot applications, no special configurations are configured for development.
 
-### gateway development
+### Develop gateway front end
 
 In the gateway-server module, webpack is used to bundle the web resources. In order to develop without frequently re-packaging the web resources and restart Spring Boot application server, this project uses [webpack dev server](https://webpack.js.org/configuration/dev-server/) for local development and auto refresh. 
 
