@@ -1,4 +1,4 @@
-This project is a [POC](https://en.wikipedia.org/wiki/Proof_of_concept) project to demonstrate using [Spring Cloud](http://projects.spring.io/spring-cloud/) to build a microservice structured [Single Page Application](https://en.wikipedia.org/wiki/Single-page_application).
+This project uses [Spring Cloud](http://projects.spring.io/spring-cloud/) to build a microservice structured [Single Page Application](https://en.wikipedia.org/wiki/Single-page_application).
 
 ## Table of contents
 
