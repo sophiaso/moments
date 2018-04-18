@@ -2,29 +2,19 @@ eureka:
   client:
     register-with-eureka: true
 
-zuul:
-  ignoredServices: '*'
-  ignoredPatterns:
-      - /login
-      - /logout
-      - /user
-  host:
-    connect-timeout-millis: 20000
-    socket-timeout-millis: 20000
-
-  routes:
-    web-portal:
-        path: /**
-        serviceId: web-portal
-        stripPrefix: false
-        sensitiveHeaders:
-    auth-service:
-        path: /auth/**
-        serviceId: auth-service # Using serviceId allows zuul to route requests to multiple servers with same serviceId
-        stripPrefix: false
-        sensitiveHeaders:
-    message-service: # Message service can be accessed by: http://localhost:8080/message/xxxx
-        path: /message/**
-        serviceId: message-service  # Message service should be started after gateway
-        stripPrefix: false
-        sensitiveHeaders:
+spring:
+  resources:
+    static-locations: "classpath:/static/dist/"
+  cloud:
+    gateway:
+      routes:
+      - id: websocket
+        uri: ws://message-service
+        order: 9000
+        predicates:
+        - Path=/message/moments-message/**/**/websocket
+      - id: message-service
+        uri: lb://message-service
+        order: 10000
+        predicates:
+        - Path=/message/**

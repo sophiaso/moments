@@ -24,6 +24,8 @@
 
         <spring.cloud.dependencies.version>Finchley.M9</spring.cloud.dependencies.version>
         <spring.cloud.netflix.version>2.0.0.M7</spring.cloud.netflix.version>
+        <spring.cloud.gateway.version>2.0.0.M9</spring.cloud.gateway.version>
+        <org.projectlombok.version>1.16.20</org.projectlombok.version>
     </properties>
 
     <repositories>
@@ -53,6 +55,18 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-gateway</artifactId>
+                <version>2.0.0.M9</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${org.projectlombok.version}</version>
+        </dependency>
         </dependencies>
     </dependencyManagement>
 
