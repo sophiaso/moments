@@ -30,10 +30,10 @@ public class WebsocketUpgradeFilter implements GlobalFilter, Ordered {
 
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
-        String upgrade = exchange.getRequest().getHeaders().getUpgrade();
+        final String upgrade = exchange.getRequest().getHeaders().getUpgrade();
         if ("WebSocket".equalsIgnoreCase(upgrade)) {
-            URI requestUrl = exchange.getRequiredAttribute(GATEWAY_REQUEST_URL_ATTR);
-            URI ws = UriComponentsBuilder.fromUri(requestUrl).scheme("ws").build().toUri();
+            final URI requestUrl = exchange.getRequiredAttribute(GATEWAY_REQUEST_URL_ATTR);
+            final URI ws = UriComponentsBuilder.fromUri(requestUrl).scheme("ws").build().toUri();
             exchange.getAttributes().put(GATEWAY_REQUEST_URL_ATTR, ws);
         }
         return chain.filter(exchange);
