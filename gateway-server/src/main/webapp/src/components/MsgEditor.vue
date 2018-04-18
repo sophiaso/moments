@@ -12,6 +12,7 @@
 <script>
     import Stomp from 'stompjs';
     import SockJS from 'sockjs-client';
+    import EventBus from '../lib/event-bus';
 
     const socketUrl = "/message/moments-message"
 
@@ -31,6 +32,11 @@
                     console.log("Connected: " + frame);
                     _this.stompClient.subscribe('/topic/messages', function (message) {
                         console.log("Received message: " + message);
+                        let msgBody = JSON.parse(message.body);
+                        EventBus.$emit('RECV_MSG', {
+                            author: msgBody.name,
+                            text: msgBody.message
+                        });
                     });
                 },
                 function (frame) {

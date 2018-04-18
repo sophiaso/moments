@@ -5,6 +5,7 @@
 </template>
 <script>
     import MsgDetail from './MsgDetail';
+    import EventBus from '../lib/event-bus';
 
     export default {
         data() {
@@ -26,6 +27,12 @@
         },
         components: {
             MsgDetail
+        },
+        mounted: function() {
+            let _this = this;
+            EventBus.$on('RECV_MSG', function(msg_json) {
+                _this.msgList.unshift(msg_json);
+            });
         }
     }
 </script>
