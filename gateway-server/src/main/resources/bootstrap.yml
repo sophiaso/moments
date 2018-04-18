@@ -17,12 +17,13 @@ spring:
     gateway:
       routes:
       - id: websocket
-#        order: -1
         uri: ws://message-service
+        order: 9000
         predicates:
-        - Path=/message/moments-message
+        - Path=/message/moments-message/**/**/websocket
       - id: message-service
         uri: lb://message-service
+        order: 10000
         predicates:
         - Path=/message/**
 
