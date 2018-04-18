@@ -10,7 +10,7 @@ $ npm run build
 $ cd .. && mvn clean install
 
 Start servers one after another under each module folder.
-config-server, eureka-server, message-service, web-portal, gateway-server
+config-server, eureka-server, message-service, gateway-server
 
 $ cd config-server
 $ mvn spring-boot:run
