@@ -1,29 +1,7 @@
-#spring:
-#  application:
-#    name: gateway-server
-#  cloud:
-#    config:
-#      uri: http://localhost:8888
-#      fail-fast: true
-
-eureka:
-  client:
-    register-with-eureka: true
-
 spring:
-  resources:
-    static-locations: "classpath:/static/dist/"
+  application:
+    name: gateway-server
   cloud:
-    gateway:
-      routes:
-      - id: websocket
-        uri: ws://message-service
-        order: 9000
-        predicates:
-        - Path=/message/moments-message/**/**/websocket
-      - id: message-service
-        uri: lb://message-service
-        order: 10000
-        predicates:
-        - Path=/message/**
-
+    config:
+      uri: http://localhost:8888
+      fail-fast: true
