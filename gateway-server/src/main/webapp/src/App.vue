@@ -4,7 +4,7 @@
         <b-container>
             <b-row align-h="center">
                 <b-col cols="8">
-                    <MsgEditor v-show="hasLoggedIn()"></MsgEditor>
+                    <MsgEditor v-if="hasLoggedIn()"></MsgEditor>
                     <MsgList></MsgList>
                 </b-col>
             </b-row>
