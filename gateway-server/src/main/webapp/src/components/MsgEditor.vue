@@ -50,6 +50,7 @@
                         name: this.$store.state.username,
                         message: this.msg
                     }));
+                this.msg = "";
             }
         },
         mounted: function() {
