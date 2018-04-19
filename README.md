@@ -63,6 +63,7 @@ For the front end under [gateway-server](gateway-server/src/main/webapp), it's d
     └── moments-parent                // parent maven pom for other modules mainly for dependency management
 ```
 
+#### How to access
 
 ## How to run
 
@@ -95,6 +96,17 @@ For the front end under [gateway-server](gateway-server/src/main/webapp), it's d
     $ cd gateway-server
     $ mvn spring-boot:run
     ```
+
+3. Dockerize your microservice
+
+    config-server:
+
+    ```bash
+    $ cd config-server
+    $ docker build . -t configserver --build-arg PACKAGENAME=config-server-0.0.1-SNAPSHOT.jar
+    $ docker run -h config-server -p 8888:8888 -it configserver:latest
+    ```
+
 
 ### How to access
 
@@ -130,6 +142,7 @@ Start webpack dev server:
 
 ```bash
 $ npm run start
+
 ```
 
 Access http://localhost:9090.
