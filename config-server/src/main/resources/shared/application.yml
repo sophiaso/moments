@@ -7,4 +7,5 @@ eureka:
     lease-renewal-interval-in-seconds: 1
   client:
     service-url:
-      defaultZone: ${EUREKA_CLIENT_SERVICEURL_DEFAULTZONE:http://localhost:8761/eureka} # default value
+      # https://github.com/spring-cloud/spring-cloud-netflix/issues/2541
+      defaultZone: ${SERVICE_URL_DEFAULT_ZONE:http://localhost:8761/eureka} # Spring default behavior, just to be explicit
