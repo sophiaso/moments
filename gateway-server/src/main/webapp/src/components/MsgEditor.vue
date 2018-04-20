@@ -6,7 +6,7 @@
                          :rows="3"
                          :max-rows="6">
         </b-form-textarea>
-        <b-button id="post-btn" variant='info' @click="sendMessage">Post</b-button>
+        <b-button id="post-btn" variant='info' @click="sendMessage" :disabled="!canPostMessage">Post</b-button>
     </div>
 </template>
 <script>
@@ -51,6 +51,11 @@
                         message: this.msg
                     }));
                 this.msg = "";
+            }
+        },
+        computed: {
+            canPostMessage() {
+                return this.stompClient && this.stompClient.connected && this.msg && this.msg.trim();
             }
         },
         mounted: function() {
