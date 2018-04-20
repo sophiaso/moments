@@ -17,18 +17,14 @@ public class WebFluxSecurityConfig {
     @Bean
     public SecurityWebFilterChain springWebFilterChain(ServerHttpSecurity http) throws Exception {
         http.headers().frameOptions().mode(XFrameOptionsServerHttpHeadersWriter.Mode.SAMEORIGIN);
-        return http
-                .authorizeExchange()
+        http.authorizeExchange()
                 .pathMatchers("/dist/**", "/js/**").permitAll()
-                .pathMatchers("/", "/login**").permitAll()
                 .pathMatchers("/**/admin/**").hasRole("ADMIN")
-                .and().logout().logoutUrl("/logout")
-                .and().authorizeExchange()
                 .anyExchange().authenticated()
-                .and()
-                .formLogin()
                 .and().csrf().disable()
-                .build();
+                .formLogin();
+
+        return http.build();
     }
 
     @Bean
