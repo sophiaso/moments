@@ -3,5 +3,5 @@ spring:
     name: message-service
   cloud:
     config:
-      uri: http://localhost:8888
+      uri: ${SPRING_CLOUD_CONFIG_URI:http://localhost:8888}
       fail-fast: true
