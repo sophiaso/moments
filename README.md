@@ -63,8 +63,6 @@ For the front end under [gateway-server](gateway-server/src/main/webapp), it's d
     └── moments-parent                // parent maven pom for other modules mainly for dependency management
 ```
 
-#### How to access
-
 ## How to run
 
 ### Run with maven
